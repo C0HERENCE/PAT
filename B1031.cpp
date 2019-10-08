@@ -11,13 +11,14 @@ int main()
 	int n;
 	cin >> n;
 	vector<string> wrong;
+	getchar();
 	for (int i=0;i<n;i++)
 	{
 		string id;
-		cin >> id;
+		getline(cin,id);
 		int sum=0;
 		bool valid=true;
-		for (int j=0;j<id.length();j++)
+		for (int j=0;j<id.length()-1;j++)
 		{
 			if (isdigit(id[j]))
 			{
