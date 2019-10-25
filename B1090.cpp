@@ -8,41 +8,28 @@ int main()
 {
 	int n,m;
 	cin >> n >> m;
-	map<int,int> ma;
+	map<int,set<int>> dangers;
 	for (int i=0;i<n;i++)
 	{
 		int a,b;
 		cin >> a >> b;
-		ma[a] = b;
-		ma[b] = a;
+		dangers[a].insert(b);
+		dangers[b].insert(a);
 	}
 	for (int i=0;i<m;i++)
 	{
 		int count;
 		cin >> count;
-		set<int> inputs;
+		set<int> banList;
+		bool isNo = false;
 		for (int j=0;j<count;j++)
 		{
-			int temp;
-			cin >> temp;
-			inputs.insert(temp);
+			int item; cin >> item;
+			if (banList.count(item)>0)
+				isNo = true;
+			for (auto k:dangers[item]) 
+				banList.insert(k);
 		}
-		bool issafe=true;
-		for (auto i:inputs)
-		{
-			if (ma.count(i)!=0 && inputs.count(ma[i])>0)
-			{
-				issafe=false;
-				break;
-			}
-		}
-		if (issafe)
-		{
-			cout << "Yes" << endl;
-		}
-		else
-		{
-			cout << "No" << endl;
-		}
+		if (isNo) cout << "No" << endl; else cout << "Yes" << endl;
 	}
 }

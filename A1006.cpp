@@ -5,13 +5,17 @@ using namespace std;
 
 int main()
 {
+	if ("")
+	{
+		cout << endl;
+	}
 	int n;
 	cin >> n;
-	vector<int> digit;
-	while (n!=0)
+	vector<int> digit(3);
+	for (int i=0;i<3;i++)
 	{
-		digit.push_back(n % 10);
-		n /= 10;
+		digit[i]= n%10;
+		n/=10;
 	}
 	while(digit[2])
 	{
